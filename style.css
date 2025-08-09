@@ -108,42 +108,75 @@ body {
 .grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+    gap: 12px;
     width: 100%;
-    max-width: 350px;
+    max-width: 385px;
     aspect-ratio: 1;
 }
 
 .letter-tile {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
-    color: #333;
-    border-radius: 15px;
+    background: linear-gradient(145deg, #ffffff, #f0f0f0);
+    color: #2c3e50;
+    border-radius: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 28px;
+    font-weight: 900;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 
+        12px 12px 24px #d1d1d1,
+        -12px -12px 24px #ffffff,
+        inset 0 0 0 2px rgba(255, 255, 255, 0.5);
     aspect-ratio: 1;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    transform-style: preserve-3d;
 }
 
 .letter-tile.selected {
-    background: linear-gradient(135deg, #ffd700 0%, #ffb700 100%);
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.5);
+    background: linear-gradient(145deg, #ffd700, #ffb700);
+    transform: scale(1.15) translateZ(20px) rotateX(-5deg);
+    box-shadow: 
+        0 20px 40px rgba(255, 215, 0, 0.4),
+        0 10px 20px rgba(255, 183, 0, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.6),
+        inset 0 -2px 4px rgba(255, 153, 0, 0.3);
     z-index: 5;
+    color: #2c3e50;
+    border: 2px solid rgba(255, 255, 255, 0.6);
+    animation: pulse 0.5s ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1.15) translateZ(20px) rotateX(-5deg); }
+    50% { transform: scale(1.2) translateZ(25px) rotateX(-5deg); }
+    100% { transform: scale(1.15) translateZ(20px) rotateX(-5deg); }
+}
+
+.letter-tile:hover:not(.selected) {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 
+        15px 15px 30px #d1d1d1,
+        -15px -15px 30px #ffffff,
+        inset 0 0 0 2px rgba(255, 255, 255, 0.7);
+    background: linear-gradient(145deg, #ffffff, #f5f5f5);
 }
 
 
 .letter-value {
     position: absolute;
-    bottom: 3px;
-    right: 5px;
-    font-size: 10px;
-    color: #666;
+    bottom: 5px;
+    right: 7px;
+    font-size: 11px;
+    color: #888;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 1px 4px;
+    border-radius: 8px;
+    backdrop-filter: blur(5px);
 }
 
 .found-words-container {
@@ -256,12 +289,23 @@ body {
 
 .bonus-points {
     position: fixed;
-    font-size: 24px;
-    font-weight: bold;
-    color: #ffd700;
+    font-size: 32px;
+    font-weight: 900;
+    color: #fff;
+    text-shadow: 
+        2px 2px 4px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(255, 215, 0, 0.5),
+        0 0 40px rgba(255, 215, 0, 0.3);
     pointer-events: none;
     z-index: 50;
     animation: floatUp 1.5s ease-out forwards;
+    background: linear-gradient(135deg, #ffd700, #ffb700);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    padding: 5px 15px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
 }
 
 @keyframes floatUp {
