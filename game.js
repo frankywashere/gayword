@@ -252,14 +252,14 @@ function submitWord() {
 
 function showMessage(text) {
     const msgElement = document.createElement('div');
-    msgElement.className = 'bonus-points';
+    msgElement.className = 'message-popup';
     msgElement.textContent = text;
     msgElement.style.left = '50%';
     msgElement.style.top = '50%';
     msgElement.style.transform = 'translate(-50%, -50%)';
     document.body.appendChild(msgElement);
     
-    setTimeout(() => msgElement.remove(), 1500);
+    setTimeout(() => msgElement.remove(), 2000);
 }
 
 function showBonusPoints(points) {
