@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title>Word Streak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="game-container">
+        <header class="game-header">
+            <div class="score-container">
+                <div class="score">Score: <span id="score">0</span></div>
+                <div class="timer">Time: <span id="timer">60</span>s</div>
+            </div>
+            <div class="streak-container">
+                <div class="streak">Streak: <span id="streak">0</span></div>
+                <div class="best-word">Best: <span id="best-word">-</span></div>
+            </div>
+        </header>
+
+        <div class="current-word-container">
+            <div id="current-word" class="current-word"></div>
+        </div>
+
+        <div class="game-board" id="game-board">
+            <canvas id="trail-canvas"></canvas>
+            <div class="grid" id="grid"></div>
+        </div>
+
+        <div class="found-words-container">
+            <div class="found-words-header">Words Found</div>
+            <div id="found-words" class="found-words"></div>
+        </div>
+
+        <div class="game-over-modal" id="game-over-modal">
+            <div class="modal-content">
+                <h2>Game Over!</h2>
+                <div class="final-score">Final Score: <span id="final-score">0</span></div>
+                <div class="stats">
+                    <div>Words Found: <span id="words-found">0</span></div>
+                    <div>Longest Word: <span id="longest-word">-</span></div>
+                    <div>Best Streak: <span id="best-streak">0</span></div>
+                </div>
+                <button class="play-again-btn" onclick="startGame()">Play Again</button>
+            </div>
+        </div>
+
+        <div class="start-screen" id="start-screen">
+            <div class="start-content">
+                <h1>Word Streak</h1>
+                <p>Swipe to connect letters and form words!</p>
+                <button class="start-btn" onclick="startGame()">Start Game</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="dictionary.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
