@@ -122,7 +122,6 @@ body {
     font-size: 28px;
     font-weight: 900;
     cursor: pointer;
-    transition: transform 0.1s ease;
     position: relative;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     aspect-ratio: 1;
@@ -132,7 +131,6 @@ body {
 
 .letter-tile.selected {
     background: #ffd700;
-    transform: scale(1.1);
     box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
     z-index: 5;
     color: #2c3e50;
@@ -141,7 +139,6 @@ body {
 
 
 .letter-tile:hover:not(.selected) {
-    transform: scale(1.05);
     background: #f8f8f8;
 }
 
