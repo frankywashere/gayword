@@ -131,17 +131,22 @@ function selectTile(index) {
 function drawConnection() {
     const canvas = document.getElementById('trail-canvas');
     const ctx = canvas.getContext('2d');
-    const rect = canvas.getBoundingClientRect();
     
-    canvas.width = rect.width;
-    canvas.height = rect.height;
+    if (gameState.selectedTiles.length < 2) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        return;
+    }
+    
+    const rect = canvas.getBoundingClientRect();
+    if (canvas.width !== rect.width || canvas.height !== rect.height) {
+        canvas.width = rect.width;
+        canvas.height = rect.height;
+    }
     
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
-    if (gameState.selectedTiles.length < 2) return;
-    
-    ctx.strokeStyle = 'rgba(255, 215, 0, 0.6)';
-    ctx.lineWidth = 4;
+    ctx.strokeStyle = 'rgba(255, 215, 0, 0.5)';
+    ctx.lineWidth = 3;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
     
@@ -206,13 +211,11 @@ function submitWord() {
     }
     
     if (gameState.foundWords.has(word)) {
-        showMessage('Already found!');
         clearSelection();
         return;
     }
     
     if (!isValidWord(word)) {
-        showMessage('Not a valid word!');
         gameState.streak = 0;
         updateStreak();
         clearSelection();
@@ -255,11 +258,11 @@ function showMessage(text) {
     msgElement.className = 'message-popup';
     msgElement.textContent = text;
     msgElement.style.left = '50%';
-    msgElement.style.top = '50%';
+    msgElement.style.top = '30%';
     msgElement.style.transform = 'translate(-50%, -50%)';
     document.body.appendChild(msgElement);
     
-    setTimeout(() => msgElement.remove(), 2000);
+    setTimeout(() => msgElement.remove(), 500);
 }
 
 function showBonusPoints(points) {
@@ -267,11 +270,11 @@ function showBonusPoints(points) {
     bonusElement.className = 'bonus-points';
     bonusElement.textContent = `+${points}`;
     bonusElement.style.left = '50%';
-    bonusElement.style.top = '40%';
+    bonusElement.style.top = '45%';
     bonusElement.style.transform = 'translateX(-50%)';
     document.body.appendChild(bonusElement);
     
-    setTimeout(() => bonusElement.remove(), 1500);
+    setTimeout(() => bonusElement.remove(), 600);
 }
 
 function updateScore() {
