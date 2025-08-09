@@ -13,7 +13,7 @@ let gameState = {
     isDragging: false
 };
 
-const GRID_SIZE = 5;
+const GRID_SIZE = 4;
 const LETTER_FREQUENCIES = {
     'E': 12, 'A': 9, 'I': 9, 'O': 8, 'N': 7, 'R': 6, 'T': 6, 'L': 5, 'S': 5,
     'U': 4, 'D': 4, 'G': 3, 'B': 2, 'C': 3, 'M': 3, 'P': 2, 'F': 2, 'H': 2,
